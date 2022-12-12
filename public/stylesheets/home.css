@@ -1,0 +1,11 @@
+.corpo-home {
+	padding-left: 20%;
+	padding-right: 20%;
+}
+
+@media ( max-width : 775px) {
+	.corpo-home {
+		padding-left: 0%;
+		padding-right: 0%;
+	}
+}

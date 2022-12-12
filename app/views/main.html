@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>#{get 'title' /}</title>
+<meta charset="${_response_encoding}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" media="screen"
+	href="@{'/public/stylesheets/main.css'}">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"
+	integrity="sha384-xeJqLiuOvjUBq3iGOjvSQSIlwrpqjSHXpduPd6rQpuiM3f5/ijby8pCsnbu5S81n"
+	crossorigin="anonymous">
+#{get 'moreStyles' /}
+<link rel="shortcut icon" type="image/png"
+	href="@{'/public/images/favicon.png'}">
+<link rel="stylesheet"
+	href="@{'public/stylesheets/css/bootstrap.min.css'}">
+<link rel="stylesheet"
+	href="@{'public/stylesheets/css/magnific-popup.css'}">
+<link rel="stylesheet" href="@{'public/stylesheets/css/first.css'}">
+<link rel='stylesheet' href='https://css.gg/search.css'>
+<link rel='stylesheet' href='https://css.gg/home-alt.css'>
+<link rel='stylesheet' href='https://css.gg/key.css'>
+<link rel="stylesheet"
+	href="@{'public/stylesheets/login.css'}">
+	<link rel="stylesheet"
+	href="@{'public/stylesheets/home.css'}">
+</head>
+<body>
+#{if session.get('usuario')}
+	<section class="preloader">
+		<div class="spinner">
+			<span class="spinner-rotate"></span>
+		</div>
+	</section>
+
+	<nav class="navbar navbar-expand-lg" role="navigation">
+		<div class="container">
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarNav"
+				aria-controls="navbarNav" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<a class="navbar-brand mx-auto mx-lg-0" href="/">SIARC </a>
+
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav navbar-right ms-lg-6">
+					<li class="nav-item"><a href="@{Home.home}" id="titulo">:
+							Sistema de Automação de Ar Condicionados</a></li>
+				</ul>
+			</div>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<div id="itens" class="d-lg-flex ms-auto">
+					<ul class="navbar-nav navbar-right ms-lg-6">
+						<!-- Botao home -->
+						<li><a id="bt-nav" class="nav-link click-scroll" href="@{Home.home}"><i
+								class="gg-home-alt"></i></a></li>
+						<!-- Botao sair -->
+						<li class="nav-item">
+							<form name="logoutForm" action="#" method="post">
+								<a href="#" class="custom-btn btn">${session.get('usuario')}</a>
+								<a href="@{Logins.logout}" class="custom-btn btn">Sair</a>
+							</form>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<div id="backHeader">
+		<br> <br> <br>
+		<hr>
+	</div>
+	<div class="container-sm">#{doLayout /}</div>
+
+	<script src="@{'/public/javascripts/jquery-1.6.4.min.js'}"
+		type="text/javascript" charset="${_response_encoding}"></script>
+	#{get 'moreScripts' /}
+	<script src="@{'/public/javascripts/jquery.min.js'}"></script>
+	<script src="@{'/public/javascripts/bootstrap.min.js'}"></script>
+	<script src="@{'/public/javascripts/jquery.sticky.js'}"></script>
+	<script src="@{'/public/javascripts/click-scroll.js'}"></script>
+	<script src="@{'/public/javascripts/custom.js'}"></script>
+#{/if}
+<div class="text-center">
+	<br>
+	#{if flash.success}
+		<div class="alert alert-success alert-dismissible fade show" role="alert">
+			${flash.success}
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		</div>
+	#{/if}
+				
+	<br>
+	#{if flash.error}
+		<div class="alert alert-danger alert-dismissible fade show" role="alert">
+			${flash.error}
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+		</div>
+	#{/if}
+	        
+	#{doLayout /}
+</div>
+</body>
+</html>
