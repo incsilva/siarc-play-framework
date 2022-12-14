@@ -52,8 +52,10 @@ public class Aparelhos extends Controller {
 			aparelhos = Aparelho.findAll();
 		} else {
 			aparelhos = Aparelho.find(
-					"(lower(nome) like ?1 OR lower(enderecoIp) like ?2 OR lower(enderecoMac) like ?3 OR lower(local) like ?4)",
-					"%" + termo.toLowerCase() + "%", "%" + termo.toLowerCase() + "%", "%" + termo.toLowerCase() + "%",
+					"(lower(nome) like ?1 OR lower(enderecoIp) like ?2 " +
+					" OR lower(enderecoMac) like ?3 OR lower(local) like ?4)",
+					"%" + termo.toLowerCase() + "%", "%" + termo.toLowerCase() + "%",
+					 "%" + termo.toLowerCase() + "%",
 					"%" + termo.toLowerCase() + "%").fetch();
 		}
 		render(aparelhos, termo);

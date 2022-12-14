@@ -10,19 +10,19 @@
 		
 		<br />
 		<form action="@{Usuarios.salvar}" method="post">
-			<input type="hidden" name="user.id" value="${usuario?.id}" /> 
+			<input type="hidden" name="user.id" value="${user?.id}" /> 
 			
 			<span class="text-danger">#{error 'user.nome' /}</span>
-			<input type="text" name="user.nome" placeholder="Nome" value="${usuario?.nome}" class="form-control" />
+			<input type="text" name="user.nome" placeholder="Nome" value="${user?.nome}" class="form-control" />
 			<br />
 			
 			<span class="text-danger">#{error 'user.email' /}</span>
 			<input type="email" name="user.email" placeholder="E-mail"
-				value="${usuario?.email}" class="form-control" /> <br />
+				value="${user?.email}" class="form-control" /> <br />
 			
 			<span class="text-danger">#{error 'user.matricula' /}</span>
 			<input type="text" name="user.matricula" placeholder="Matrícula"
-				class="form-control" value="${usuario?.matricula}" /> <br /> 
+				class="form-control" value="${user?.matricula}" /> <br /> 
 			
 			
 			<span class="text-danger">#{error 'user.senha' /}</span>
