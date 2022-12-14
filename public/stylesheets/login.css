@@ -1,0 +1,16 @@
+#conteudo-login {
+	width: 380px;
+	padding: 50px 50px 50px 50px;
+}
+
+#bt-entrar {
+	width: 250px;
+}
+
+.link-cadastro p, a {
+	font-size: 15px;
+}
+
+.link-cadastro a {
+	color: blue;
+}

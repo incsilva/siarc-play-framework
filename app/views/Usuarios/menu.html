@@ -1,0 +1,39 @@
+#{extends 'main.html' /} #{set title:'Aparelhos: Gerenciamento - SIARC:
+Sistema de Automação de Ar Condicionados' /}
+<h3>Terminal de Aparelhos</h3>
+<br />
+
+<div class="card border-primary mb-3" style="max-width: 25rem;">
+	<div class="card-header">#1</div>
+	<div class="card-body text-primary">
+		<h5 class="card-title">Usuários</h5>
+		<p class="card-text">Aqui você pode verificar todos os
+			usuários cadastrados.</p>
+		<div class="text-center">
+			<a href="@{Usuarios.listar}" class="btn btn-primary">Entrar</a>
+		</div>
+	</div>
+</div>
+
+<div class="card border-primary mb-3" style="max-width: 25rem;">
+	<div class="card-header">#2</div>
+	<div class="card-body text-primary">
+		<h5 class="card-title">Adicionar novo</h5>
+		<p class="card-text">Aqui você pode adicionar novos usuários ao sitema.</p>
+		<div class="text-center">
+			<a href="@{Usuarios.cadastrar}" class="btn btn-primary">Entrar</a>
+		</div>
+	</div>
+</div>
+
+<div class="card border-primary mb-3" style="max-width: 25rem;">
+		<div class="card-header">#3</div>
+		<div class="card-body text-primary">
+			<h5 class="card-title">Pesquisar</h5>
+			<p class="card-text">Aqui você pode pesquisar por um determinado
+				usuário.</p>
+			<div class="text-center">
+				<a href="#" class="btn btn-primary">Entrar</a>
+			</div>
+		</div>
+	</div>

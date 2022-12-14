@@ -1,0 +1,24 @@
+#{extends 'main.html' /} 
+#{set title:'Login' /}
+<br><br>
+<div class="container my-2" id="conteudo-login" >
+<div class="cadastro">
+	<h2 class="text-center">Login</h2>
+	<br/>
+		
+	<form action="@{Logins.loginSecurity}" method="post">
+		
+		<input type="text" name="matricula" class="form-control" placeholder="Matrícula"/> <br />
+		
+		<input type="password" name="senha" class="form-control" placeholder="Senha"/> <br /> 
+		
+		<input id="bt-entrar" type="submit" value="Entrar" class="btn btn-primary"/> <br /> <br /> <br />
+		
+		<div class="link-cadastro">
+		<p>Novo no SIARC?
+			<a href="@{Usuarios.cadastrar}"> Cadastre-se clicando aqui</a>
+		</p>
+		</div>
+	</form>
+</div>
+</div>
