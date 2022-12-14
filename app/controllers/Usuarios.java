@@ -10,6 +10,7 @@ import models.Status;
 import models.Usuario;
 import models.statusUsuario;
 import play.data.validation.Valid;
+import play.libs.Crypto;
 import play.mvc.Controller;
 import play.mvc.With;
 import security.Adiministrador;
@@ -27,7 +28,7 @@ public class Usuarios extends Controller {
 		render();
 	}
 
-	public static void salvar(@Valid Usuario user) {
+	public static void salvar(@Valid Usuario user, String senha) {
 
 		long quantidade = Usuario.count("matricula = ?1 and status = ?2", user.matricula, statusUsuario.ativo);
 
@@ -38,6 +39,8 @@ public class Usuarios extends Controller {
 				flash.error("Algum problema foi detectado...");
 				cadastrar();
 			}
+			senha = user.senha;
+			user.senha = Crypto.passwordHash(senha);
 			user.save();
 			flash.success("O cadastro foi um sucesso!");
 		} 
