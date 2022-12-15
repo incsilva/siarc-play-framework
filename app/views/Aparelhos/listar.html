@@ -5,14 +5,18 @@
 	<h3>Aparelhos Ligados</h3>
 	 <br>
 <form action="@{Aparelhos.listar}" method="get">
-	<div class="row">
-		<div class="col-7">
-			<input type="text" name="termo" class="form-control"/>
-		</div>
-		<input type="submit" value="Pesquisar" class="btn btn-primary btn-sm col-3"/>
-		<a href="@{Aparelhos.menu}" class="btn btn-outline-primary btn-sm col-1">Voltar</a>
+	<div class="input-group mb-3">
+		<input type="text" name="termo" class="form-control"
+			placeholder="Pesquisar" aria-label="Pesquisar"
+			aria-describedby="button-addon2">
+		<input class="btn btn-primary" value="Pesquisar" type="submit"
+			id="button-addon2">		
+			<!--  <a href="@{Aparelhos.menu}" class="btn btn-outline-primary btn-sm col-1">Voltar</a> -->
 	</div>
 	#{if termo}
+	
+	
+	
 		<small>Pesquisando por: ${termo}</small>
 	#{/if}
 	#{else}
@@ -41,8 +45,8 @@
 			<th>${aparelho.local}</th>
 			<th>${aparelho.codIrLigar}</th>
 			<th>${aparelho.codIrDesligar}</th>
-			<th><a href="@{Aparelhos.editar(aparelho.id)}" class="btn btn-primary btn-sm" style="margin-right: 10px">Editar</a> 
-			<a href="@{Aparelhos.remover(aparelho.id)}" class="btn btn-danger btn-sm">Remover</a></th>
+			<th><a href="@{Aparelhos.editar(aparelho.id)}" class="btn btn-primary btn-sm" style="margin-right: 10px"><i class="bi bi-pencil-square"></i></a> 
+			<a href="@{Aparelhos.remover(aparelho.id)}" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></a></th>
 		</tr>
 		#{/list}
 	</tbody>

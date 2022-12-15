@@ -12,25 +12,24 @@ import play.db.jpa.Model;
 @Entity
 public class Aparelho extends Model {
 
-	@Required
-	@Unique
+	@Required(message = "Este campo é obrigatório")
+	@Unique(message = "Este nome de aparelho já está em uso")
 	public String nome;
 
-	@Required
-	@IPv4Address
-	@Unique
+	@Required(message = "Este campo é obrigatório")
+	@Unique(message = "Este endereço IP já está em uso")
 	public String enderecoIp;
 
-	@Required
+	@Required(message = "Este campo é obrigatório")
 	public String enderecoMac;
 
-	@Required
+	@Required(message = "Este campo é obrigatório")
 	public String local;
 
-	@Required
+	@Required(message = "Este campo é obrigatório")
 	public String codIrLigar;
 
-	@Required
+	@Required(message = "Este campo é obrigatório")
 	public String codIrDesligar;
 
 	public Aparelho() {

@@ -10,7 +10,7 @@
 }
 
 #backHeader {
-	background-color: #0D6EFD;
+	background-color: #01409D;
 	width: 100%;
 }
 
@@ -18,12 +18,8 @@
 	color: #fff;
 }
 
-#bt-nav {
-	padding-left: 10px;
-}
-
 #bt-nav:hover {
-	color: #43598C;
+	color: #5798F9;
 }
 
 @media ( max-width : 991px) {

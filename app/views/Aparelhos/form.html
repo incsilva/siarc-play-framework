@@ -8,27 +8,33 @@
 	<form action="@{Aparelhos.salvar}" method="post">
 		<input type="hidden" name="aparelho.id" value="${aparelho?.id}" /> 
 		
-		<input type="text" name="aparelho.nome" placeholder="Nome"
+		<span class="text-danger">#{error 'aparelho.nome' /}</span>
+		<input autofocus="autofocus" type="text" name="aparelho.nome" placeholder="Nome"
 			value="${aparelho?.nome}" class="form-control" /> <br /> 
 		
+		<span class="text-danger">#{error 'aparelho.enderecoIp' /}</span>
 		<input type="text" name="aparelho.enderecoIp" placeholder="Endereço IP"
 			value="${aparelho?.enderecoIp}" class="form-control" /> <br /> 
 		
+		<span class="text-danger">#{error 'aparelho.enderecoMac' /}</span>
 		<input type="text" name="aparelho.enderecoMac" placeholder="Endereço MAC"
 			value="${aparelho?.enderecoMac}" class="form-control" /> <br />
 			
+		<span class="text-danger">#{error 'aparelho.local' /}</span>
 		<input type="text" name="aparelho.local" placeholder="Local"
 			value="${aparelho?.local}" class="form-control"><br />
 			
+		<span class="text-danger">#{error 'aparelho.codIrLigar' /}</span>
 		<input type="text" name="aparelho.codIrLigar" placeholder="Código Infravermelho: LIGAR"
 			value="${aparelho?.codIrLigar}" class="form-control" /> <br />
 			
+		<span class="text-danger">#{error 'aparelho.codIrDesligar' /}</span>
 		<input type="text" name="aparelho.codIrDesligar" placeholder="Código Infravermelho: DESLIGAR"
 			value="${aparelho?.codIrDesligar}" class="form-control" /> <br />
 		<br /> <br /> 
-		<div class="d-grid gap-2 col-6 mx-auto">
+			<div class="d-grid gap-2 d-md-block ">
 		<input type="submit" value="Salvar"
-			class="btn btn-primary" />
+			class="btn btn-primary btn" />
 			<a href="@{Aparelhos.menu}" class="btn btn-primary">Voltar</a>
 		</div>	
 	</form>

@@ -10,6 +10,7 @@ import models.Status;
 import models.Usuario;
 import models.statusUsuario;
 import play.data.validation.Valid;
+import play.libs.Crypto;
 import play.mvc.Controller;
 import play.mvc.With;
 import security.Adiministrador;
@@ -27,22 +28,23 @@ public class Usuarios extends Controller {
 		render();
 	}
 
-	public static void salvar(@Valid Usuario user) {
+	public static void salvar(@Valid Usuario user, String senha) {
 
 		long quantidade = Usuario.count("matricula = ?1 and status = ?2", user.matricula, statusUsuario.ativo);
 
 		if (quantidade == 0) {
 			if (validation.hasErrors()) {
+				params.flash();
 				validation.keep();
+				flash.error("Algum problema foi detectado...");
 				cadastrar();
 			}
+			senha = user.senha;
+			user.senha = Crypto.passwordHash(senha);
 			user.save();
 			flash.success("O cadastro foi um sucesso!");
-		} else {
-			flash.error("Essa matrícula já existe no sistema, tente outra!");
-			cadastrar();
-		}
-		Home.home();
+		} 
+		cadastrar();
 	}
 
 	@Adiministrador
@@ -50,20 +52,23 @@ public class Usuarios extends Controller {
 		String termo = params.get("termo");
 
 		List<Usuario> usuarios = Collections.EMPTY_LIST;
-		if (usuarios == null || usuarios.isEmpty()) {
+		if (termo == null || termo.isEmpty()) {
 			usuarios = Usuario.find("status = ?1", statusUsuario.ativo).fetch();
 		} else {
-			usuarios = Usuario.find("(nome like ?1 OR email like ?2 OR matricula like ?3) AND status = ?4 ",
-					"%" + termo.toLowerCase() + "%", "%" + termo.toLowerCase() + "%", "%" + termo.toLowerCase() + "%",
+			usuarios = Usuario.find("(lower(nome) like ?1 OR lower(sobrenome) like ?2 OR lower(email) like ?3 OR matricula = ?4) AND status = ?5",
+					"%" + termo.toLowerCase() + "%",
+					"%" + termo.toLowerCase() + "%",
+					"%" + termo.toLowerCase() + "%",
+					"%" + termo.toLowerCase() + "%",
 					statusUsuario.ativo).fetch();
 		}
 		render(usuarios, termo);
 	}
 
 	public static void editar(Long id) {
-		Usuario usuario = Usuario.findById(id);
+		Usuario user = Usuario.findById(id);
 		List<Funcao> funcoes = Arrays.asList(Funcao.values());
-		renderTemplate("Usuarios/cadastrar.html", usuario, funcoes);
+		renderTemplate("Usuarios/cadastrar.html", user, funcoes);
 	}
 
 	public static void remover(Long id) {

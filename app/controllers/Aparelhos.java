@@ -5,6 +5,7 @@ import java.util.List;
 
 import models.Aparelho;
 import models.Status;
+import play.data.validation.Valid;
 import play.mvc.Controller;
 import play.mvc.With;
 import security.Seguranca;
@@ -19,13 +20,14 @@ public class Aparelhos extends Controller {
 		render();
 	}
 
-	public static void salvar(Aparelho aparelho) {
+	public static void salvar(@Valid Aparelho aparelho) {
 		long qtd = Aparelho.count("nome = ?1", aparelho.nome);
-		if (qtd == 0) {
+		if (validation.hasErrors()) {
+			validation.keep();
+			flash.error("Alguns problemas foram encontrados...");
+		} else {
 			aparelho.save();
 			flash.success("Aparelho cadastrado com sucesso.");
-		} else {
-			flash.error("O Aparelho informado já existe");
 		}
 		form();
 	}
@@ -50,8 +52,10 @@ public class Aparelhos extends Controller {
 			aparelhos = Aparelho.findAll();
 		} else {
 			aparelhos = Aparelho.find(
-					"(lower(nome) like ?1 OR lower(enderecoIp) like ?2 OR lower(enderecoMac) like ?3 OR lower(local) like ?4)",
-					"%" + termo.toLowerCase() + "%", "%" + termo.toLowerCase() + "%", "%" + termo.toLowerCase() + "%",
+					"(lower(nome) like ?1 OR lower(enderecoIp) like ?2 " +
+					" OR lower(enderecoMac) like ?3 OR lower(local) like ?4)",
+					"%" + termo.toLowerCase() + "%", "%" + termo.toLowerCase() + "%",
+					 "%" + termo.toLowerCase() + "%",
 					"%" + termo.toLowerCase() + "%").fetch();
 		}
 		render(aparelhos, termo);

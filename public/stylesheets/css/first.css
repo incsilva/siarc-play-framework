@@ -254,7 +254,7 @@ strong {
   border-style: solid;
   border-color: var(--white-color);
   color: var(--white-color);
-  padding: 8px 22px;
+  padding: 3px 20px;
 }
 
 .navbar .custom-btn:hover {
@@ -268,7 +268,7 @@ strong {
   border-radius: var(--border-radius-large);
   color: var(--white-color);
   font-weight: var(--font-weight-bold);
-  padding: 12px 24px;
+  padding: 3px 20px;
 }
 
 .custom-btn:hover {

@@ -18,20 +18,23 @@ import play.db.jpa.Model;
 @Entity
 public class Usuario extends Model {
 
-	@Required
-	@Unique
+	@Required(message = "Este campo é obrigatório")
 	public String nome;
 
+	@Required(message = "Este campo é obrigatório")
+	public String sobrenome;
+
 	@Email(message = "O e-mail deve estar no formato correto.")
-	@Unique
+	@Unique(message = "O e-mail informado já está em uso. Tente outro")
+	@Required(message = "Este campo é obrigatório")
 	public String email;
 
-	@Required
-	@Unique
-	@Min(value = 8)
+	@Required(message = "Este campo é obrigatório")
+	@Unique(message = "A matrícula informada já está cadastrada no sistema")
+	@Min(value = 8, message = "Sua matricula deve ter no mínimo 8 caracteres")
 	public String matricula;
-	
-	@Required
+
+	@Required(message = "Este campo é obrigatório")
 	@Password
 	@Equals("confirmaSenha")
 	public String senha;
@@ -41,7 +44,7 @@ public class Usuario extends Model {
 
 	@Enumerated(EnumType.STRING)
 	public Funcao funcao;
-	
+
 	@Enumerated(EnumType.STRING)
 	public statusUsuario status;
 
@@ -49,46 +52,13 @@ public class Usuario extends Model {
 		funcao = funcao.usuario;
 		status = statusUsuario.ativo;
 	}
-	
+
 	public void ativar() {
 		status = statusUsuario.ativo;
 	}
-	
+
 	public void inativar() {
 		status = statusUsuario.inativo;
 	}
 
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getMatricula() {
-		return matricula;
-	}
-
-	public void setMatricula(String matricula) {
-		this.matricula = matricula;
-	}
-
-	public Funcao getFuncao() {
-		return funcao;
-	}
-
-	public void setFuncao(Funcao funcao) {
-		this.funcao = funcao;
-	}
-	
-	
 }
