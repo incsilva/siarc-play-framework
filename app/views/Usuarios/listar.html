@@ -16,6 +16,9 @@
 
 	<hr>
 
+	<a href="@{Usuarios.cadastrar}" class="btn btn-primary btn-sm">Novo</a> <a
+		href="@{Usuarios.menu}" class="btn btn-primary btn-sm">Voltar</a>
+
 	<div class="table-responsive">
 		<table class="table table-striped table-hover">
 			<thead>
@@ -36,8 +39,7 @@
 					<td>${usuario.funcao}</td>
 					<td><a href="@{Usuarios.detalhar(usuario.id)}"
 						class="btn btn-info"><i class="bi bi-info-circle"></i></a> <a
-						href="@{Usuarios.editar(usuario.id)}" class="btn btn-primary"><i
-							class="bi bi-pencil-square"></i></a> <a
+						href="#" class="btn btn-primary"><i class="bi bi-person-gear"></i></a> <a
 						href="@{Usuarios.remover(usuario.id)}" class="btn btn-danger"><i
 							class="bi bi-trash"></i></a></td>
 				</tr>
@@ -45,6 +47,4 @@
 			</tbody>
 		</table>
 	</div>
-	<a href="@{Usuarios.cadastrar}" class="btn btn-primary">Novo</a> <a
-		href="@{Usuarios.menu}" class="btn btn-primary">Voltar</a>
 </div>

@@ -1,37 +1,48 @@
 #{extends 'main.html' /} #{set title:'Ar Condicionado: Cadastrar - SIARC: Sistema de Automação de Ar Condicionados' /}
 <div class="cadastro">
 <br>
-<div class="col-sm-5">
+<div class="col-lg-7">
 	<h3>AR CONDICIONADO</h3><br/>
 	<hr>
 	<p>PREENCHA AS IRFORMAÇÕES COM ATENÇÃO***</p>
 	<form action="@{Aparelhos.salvar}" method="post">
 		<input type="hidden" name="aparelho.id" value="${aparelho?.id}" /> 
 		
-		<span class="text-danger">#{error 'aparelho.nome' /}</span>
+		Nome
 		<input autofocus="autofocus" type="text" name="aparelho.nome" placeholder="Nome"
-			value="${aparelho?.nome}" class="form-control" /> <br /> 
+			value="${aparelho?.nome}" class="form-control" /> 
+		<span class="text-danger">#{error 'aparelho.nome' /}</span>
+		<br /> <br>
 		
-		<span class="text-danger">#{error 'aparelho.enderecoIp' /}</span>
+		Endereço IP
 		<input type="text" name="aparelho.enderecoIp" placeholder="Endereço IP"
-			value="${aparelho?.enderecoIp}" class="form-control" /> <br /> 
+			value="${aparelho?.enderecoIp}" class="form-control" /> 
+		<span class="text-danger">#{error 'aparelho.enderecoIp' /}</span>
+		<br><br> 
 		
-		<span class="text-danger">#{error 'aparelho.enderecoMac' /}</span>
+		Endereço MAC
 		<input type="text" name="aparelho.enderecoMac" placeholder="Endereço MAC"
-			value="${aparelho?.enderecoMac}" class="form-control" /> <br />
+			value="${aparelho?.enderecoMac}" class="form-control" /> 
+		<span class="text-danger">#{error 'aparelho.enderecoMac' /}</span>
+		<br><br>
 			
-		<span class="text-danger">#{error 'aparelho.local' /}</span>
+		Local
 		<input type="text" name="aparelho.local" placeholder="Local"
-			value="${aparelho?.local}" class="form-control"><br />
+			value="${aparelho?.local}" class="form-control">
+		<span class="text-danger">#{error 'aparelho.local' /}</span>
+		<br><br>
 			
-		<span class="text-danger">#{error 'aparelho.codIrLigar' /}</span>
+		Código IR Ligar
 		<input type="text" name="aparelho.codIrLigar" placeholder="Código Infravermelho: LIGAR"
-			value="${aparelho?.codIrLigar}" class="form-control" /> <br />
+			value="${aparelho?.codIrLigar}" class="form-control" />
+		<span class="text-danger">#{error 'aparelho.codIrLigar' /}</span>
+		<br><br>
 			
-		<span class="text-danger">#{error 'aparelho.codIrDesligar' /}</span>
+		Código IR Desligar
 		<input type="text" name="aparelho.codIrDesligar" placeholder="Código Infravermelho: DESLIGAR"
-			value="${aparelho?.codIrDesligar}" class="form-control" /> <br />
-		<br /> <br /> 
+			value="${aparelho?.codIrDesligar}" class="form-control" /> 
+		<span class="text-danger">#{error 'aparelho.codIrDesligar' /}</span>
+		<br><br> 
 			<div class="d-grid gap-2 d-md-block ">
 		<input type="submit" value="Salvar"
 			class="btn btn-primary btn" />
