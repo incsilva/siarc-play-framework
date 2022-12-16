@@ -12,8 +12,8 @@ import security.Seguranca;
 
 public class Aparelhos extends Controller {
 
-	public static void form() {
-		render();
+	public static void form(Aparelho aparelho) {
+		render(aparelho);
 	}
 
 	public static void menu() {
@@ -21,15 +21,19 @@ public class Aparelhos extends Controller {
 	}
 
 	public static void salvar(@Valid Aparelho aparelho) {
-		long qtd = Aparelho.count("nome = ?1", aparelho.nome);
+		long qtd = Aparelho.count("nome = ?1 and id <> ?2", aparelho.nome, aparelho.id);
 		if (validation.hasErrors()) {
 			validation.keep();
-			flash.error("Alguns problemas foram encontrados...");
-		} else {
+			form(aparelho);
+		} 
+
+		if (qtd == 0) {
 			aparelho.save();
-			flash.success("Aparelho cadastrado com sucesso.");
+			flash.success("Cadastro realizado com sucesso.");
+		} else {
+			flash.error("O aparelho informado já possui cadastro.");
 		}
-		form();
+		listar();
 	}
 
 	public static void editar(Long id) {

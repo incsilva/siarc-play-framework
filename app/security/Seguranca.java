@@ -3,6 +3,7 @@ package security;
 import controllers.Logins;
 import controllers.Usuarios;
 import models.Funcao;
+import models.Usuario;
 import play.mvc.Before;
 import play.mvc.Controller;
 
@@ -20,7 +21,7 @@ public class Seguranca extends Controller {
 	static void verificarCadastro() {
 		if(session.get("usuario") == null) {
 			flash.error("É necessário se autenticar no sistema!");
-			Usuarios.cadastrar();
+			//Usuarios.cadastrar();
 		}
 	}
 	

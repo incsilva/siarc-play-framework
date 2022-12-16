@@ -19,9 +19,9 @@ import security.Seguranca;
 @With(Seguranca.class)
 public class Usuarios extends Controller {
 
-	public static void cadastrar() {
+	public static void cadastrar(Usuario usuario) {
 		List<Funcao> funcoes = Arrays.asList(Funcao.values());
-		render(funcoes);
+		render(funcoes, usuario);
 	}
 
 	public static void menu() {
@@ -30,22 +30,21 @@ public class Usuarios extends Controller {
 
 	public static void salvar(@Valid Usuario user, String senha) {
 
-		long quantidade = Usuario.count("matricula = ?1 and status = ?2", user.matricula, statusUsuario.ativo);
+		long quantidade = Usuario.count("matricula = ?1 and id <> ?2", user.matricula, user.id);
+		if (validation.hasErrors()) {
+			validation.keep();
+			cadastrar(user);
+		}
 
 		if (quantidade == 0) {
-			if (validation.hasErrors()) {
-				params.flash();
-				validation.keep();
-				flash.error("Algum problema foi detectado...");
-				cadastrar();
-			}
-			senha = user.senha;
-			user.senha = Crypto.passwordHash(senha);
 			user.save();
-			flash.success("O cadastro foi um sucesso!");
-		} 
-		cadastrar();
+			flash.success("Cadastro realizado com sucesso.");
+		} else {
+			flash.error("Não possível completar este cadastro.");
+		}
+		listar();
 	}
+
 
 	@Adiministrador
 	public static void listar() {
