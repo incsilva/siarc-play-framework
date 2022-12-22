@@ -64,4 +64,16 @@ public class Aparelhos extends Controller {
 		}
 		render(aparelhos, termo);
 	}
+
+	public static void ligados() {
+		List<Aparelho> ligados = Collections.EMPTY_LIST;
+		ligados = Aparelho.find("status = ?1", Status.ligado).fetch();
+		render(ligados);
+	}
+
+	public static void desligados() {
+		List<Aparelho> desligados = Collections.EMPTY_LIST;
+		desligados = Aparelho.find("status = ?1", Status.desligado).fetch();
+		render(desligados);
+	}
 }
