@@ -1,58 +1,60 @@
-#{extends 'main.html' /}
-#{set title:'Aparelhos: Listagem - SIARC: Sistema de Automação de Ar Condicionados' /}
+#{extends 'main.html' /} #{set title:'Aparelhos: Listagem - SIARC:
+Sistema de Automação de Ar Condicionados' /}
 <div>
-<div>
-	<h3>Aparelhos Cadastrados</h3>
-	 <br>
-<form action="@{Aparelhos.listar}" method="get">
-	<div class="input-group mb-3">
-		<input type="text" name="termo" class="form-control"
-			placeholder="Pesquisar" aria-label="Pesquisar"
-			aria-describedby="button-addon2">
-		<input class="btn btn-primary" value="Pesquisar" type="submit"
-			id="button-addon2">		
-			<!--  <a href="@{Aparelhos.menu}" class="btn btn-outline-primary btn-sm col-1">Voltar</a> -->
+	<div>
+		<h3>Aparelhos Cadastrados</h3>
+		<br>
+		<form action="@{Aparelhos.listar}" method="get">
+			<div class="input-group mb-3">
+				<input type="text" name="termo" class="form-control"
+					placeholder="Pesquisar" aria-label="Pesquisar"
+					aria-describedby="button-addon2"> <input
+					class="btn btn-primary" value="Pesquisar" type="submit"
+					id="button-addon2">
+				<!--  <a href="@{Aparelhos.menu}" class="btn btn-outline-primary btn-sm col-1">Voltar</a> -->
+			</div>
+			#{if termo} <small>Pesquisando por: ${termo}</small> #{/if} #{else} <small>Pesquisar
+				por todos os aparelhos</small> #{/else} <br>
+			<br> <a href="@{Aparelhos.form}" class="btn btn-success btn-sm"><i
+				class="bi bi-file-plus"></i> Adicionar novo</a>
+			<div class="table-responsive">
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+							<th>Nome</th>
+							<th>Endereço IP</th>
+							<th>Endereço MAC</th>
+							<th>Local</th>
+							<th>Código IR Ligar</th>
+							<th>Código IR Desligar</th>
+							#{if session.get('funcao') == session.get('adm')}
+								<th>Ações</th>
+							#{/if}
+						</tr>
+					</thead>
+					<tbody>
+						#{list items: aparelhos, as:'aparelho'}
+						<tr>
+							<th>${aparelho.nome}</th>
+							<th>${aparelho.enderecoIp}</th>
+							<th>${aparelho.enderecoMac}</th>
+							<th>${aparelho.local}</th>
+							<th>${aparelho.codIrLigar}</th>
+							<th>${aparelho.codIrDesligar}</th>
+							#{if session.get('funcao') == session.get('adm')}
+								<th><a href="@{Aparelhos.editar(aparelho.id)}"
+									class="btn btn-primary btn-sm" style="margin-right: 10px"><i
+										class="bi bi-pencil-square"></i></a> <a
+									href="@{Aparelhos.remover(aparelho.id)}"
+									class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></a></th>
+							#{/if}
+						</tr>
+						#{/list}
+					</tbody>
+				</table>
+			</div>
 	</div>
-	#{if termo}
-	
-	
-	
-		<small>Pesquisando por: ${termo}</small>
-	#{/if}
-	#{else}
-		<small>Pesquisar por todos os aparelhos</small>
-	#{/else}
-	<br><br>
-	<a href="@{Aparelhos.form}" class="btn btn-success btn-sm"><i class="bi bi-file-plus"></i> Adicionar novo</a>
-<div class="table-responsive">
-<table class="table table-striped table-hover">
-	<thead>
-		<tr>
-			<th>Nome</th>
-			<th>Endereço IP</th>
-			<th>Endereço MAC</th>
-			<th>Local</th>
-			<th>Código IR Ligar</th>
-			<th>Código IR Desligar</th>
-			<th>Ações</th>
-		</tr>
-	</thead>
-	<tbody>
-		#{list items: aparelhos, as:'aparelho'}
-		<tr>
-			<th>${aparelho.nome}</th>
-			<th>${aparelho.enderecoIp}</th>
-			<th>${aparelho.enderecoMac}</th>
-			<th>${aparelho.local}</th>
-			<th>${aparelho.codIrLigar}</th>
-			<th>${aparelho.codIrDesligar}</th>
-			<th><a href="@{Aparelhos.editar(aparelho.id)}" class="btn btn-primary btn-sm" style="margin-right: 10px"><i class="bi bi-pencil-square"></i></a> 
-			<a href="@{Aparelhos.remover(aparelho.id)}" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></a></th>
-		</tr>
-		#{/list}
-	</tbody>
-</table>
 </div>
-</div>
-</div>
-<br><br><br>
+<br>
+<br>
+<br>

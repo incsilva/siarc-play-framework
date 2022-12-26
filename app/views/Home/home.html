@@ -22,19 +22,21 @@ Automação de Ar Condiciondos' /}
 			
 		</div>
 	</div>
-	<div class="col">
-		<div class="card mb-4 shadow-sm">
-			<div class="card-header">
-				<h5 class="my-0 fw-normal">USUÁRIOS</h5>
-			</div>
-			<div class="card-body">
-				<ul class="list-unstyled mt-3 mb-4">
-					<li>Gerenciar Usuários</li>
-					<li>Modificar Permissões de Usuários</li>
-				</ul>
-				<a class="w-100 btn btn-lg btn-primary" href="@{Usuarios.menu}">Acessar</a>
+	#{if session.get('funcao') == session.get('adm')}
+		<div class="col">
+			<div class="card mb-4 shadow-sm">
+				<div class="card-header">
+					<h5 class="my-0 fw-normal">USUÁRIOS</h5>
+				</div>
+				<div class="card-body">
+					<ul class="list-unstyled mt-3 mb-4">
+						<li>Gerenciar Usuários</li>
+						<li>Modificar Permissões de Usuários</li>
+					</ul>
+					<a class="w-100 btn btn-lg btn-primary" href="@{Usuarios.menu}">Acessar</a>
+				</div>
 			</div>
 		</div>
-	</div>
+	#{/if}
 </div>
 </div>

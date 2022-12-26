@@ -19,6 +19,7 @@ public class Logins extends Controller {
 		} else {
 			session.put("usuario", usuario.nome);
 			session.put("funcao", usuario.funcao);
+			session.put("adm", usuario.funcao.admin);
 			flash.success("Você logou no sistema!");
 			Home.home();
 		}

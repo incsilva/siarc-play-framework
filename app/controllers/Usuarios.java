@@ -37,12 +37,13 @@ public class Usuarios extends Controller {
 		}
 
 		if (quantidade == 0) {
+			user.senha = Crypto.passwordHash(user.senha);
 			user.save();
 			flash.success("Cadastro realizado com sucesso.");
 		} else {
 			flash.error("Não possível completar este cadastro.");
 		}
-		listar();
+		Logins.login();
 	}
 
 
@@ -74,6 +75,7 @@ public class Usuarios extends Controller {
 		Usuario user = Usuario.findById(id);
 		user.inativar();
 		user.save();
+		listar();
 	}
 
 	public static void detalhar(Long id) {

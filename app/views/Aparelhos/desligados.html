@@ -42,7 +42,7 @@
 			<th>${ap.local}</th>
             <th>${ap.status}</th>
 			<th>
-                <a href="#" class="btn btn-warning btn-sm" style="margin-right: 10px"><i class="bi bi-power"></i></a>
+                <a href="@{Aparelhos.funcionar(ap.id)}" class="btn btn-warning btn-sm" style="margin-right: 10px"><i class="bi bi-power"></i></a>
 		</tr>
 		#{/list}
 	</tbody>

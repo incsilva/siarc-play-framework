@@ -76,9 +76,11 @@
 						<!-- Botao Aparelhos -->
 						<li><a class="nav-link click-scroll"
 							aria-current="page" href="@{Aparelhos.menu}">Aparelhos</a></li>
-						<!-- Botao Usuários -->
-						<li><a class="nav-link click-scroll"
-							aria-current="page" href="@{Usuarios.menu}">Usuários</a></li>
+						#{if session.get('funcao') == session.get('adm')}
+							<!-- Botao Usuários -->
+							<li><a class="nav-link click-scroll"
+								aria-current="page" href="@{Usuarios.menu}">Usuários</a></li>
+						#{/if}
 						<!-- Botao sair -->
 
 						<li class="nav dropleft"><a

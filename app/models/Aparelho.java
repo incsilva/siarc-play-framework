@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
-import play.data.validation.IPv4Address;
 import play.data.validation.Required;
 import play.data.validation.Unique;
 import play.db.jpa.Model;
