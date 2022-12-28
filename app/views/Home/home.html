@@ -6,37 +6,30 @@ Automação de Ar Condiciondos' /}
 <h3>Seja bem vind@!</h3>
 <br />
 <div class="corpo-home">
-<div class="container text-center">
-		<div class="col">
-			<div id="card" class="card mb-4 shadow-sm">
-				<div class="card-header">
-					<h5 class="my-0 fw-normal">AR CONDICIONADOS</h5>
-				</div>
-				<div class="card-body">
-					<ul class="list-unstyled mt-3 mb-4">
-						<li>Gerenciar Aparelhos</li>
-						<li>Realizar Agendamentos</li>
-					</ul>
-					<a class="w-100 btn btn-lg btn-primary" href="@{Aparelhos.menu}">Acessar</a>
-				</div>
-			
-		</div>
+<div class="row text-center">
+<div class="card" style="width: 24rem;">
+	<img src="@{'/public/images/aparelhos-card.svg'}" class="card-img-top" alt="...">
+	<div class="card-body">
+	  <h5 class="card-title">Terminal de Aparelhos</h5>
+	  <ul class="list-unstyled mt-3 mb-4">
+		<li>Gerenciar Aparelhos</li>
+		<li>Realizar Agendamentos</li>
+	</ul>
+	  <a href="@{Aparelhos.menu}" class="btn btn-primary">Acessar</a>
 	</div>
-	#{if session.get('funcao') == session.get('adm')}
-		<div class="col">
-			<div class="card mb-4 shadow-sm">
-				<div class="card-header">
-					<h5 class="my-0 fw-normal">USUÁRIOS</h5>
-				</div>
-				<div class="card-body">
-					<ul class="list-unstyled mt-3 mb-4">
-						<li>Gerenciar Usuários</li>
-						<li>Modificar Permissões de Usuários</li>
-					</ul>
-					<a class="w-100 btn btn-lg btn-primary" href="@{Usuarios.menu}">Acessar</a>
-				</div>
-			</div>
-		</div>
-	#{/if}
-</div>
+  </div>
+  #{if session.get('funcao') == session.get('adm')}
+  <div class="card" style="width: 24rem;">
+	<img src="@{'/public/images/usuarios-card.svg'}" class="card-img-top" alt="...">
+	<div class="card-body">
+	  <h5 class="card-title">Terminal de Usuários</h5>
+	  <ul class="list-unstyled mt-3 mb-4">
+		<li>Gerenciar Usuários</li>
+		<li>Modificar Permissões de Usuários</li>
+	</ul>
+	  <a href="@{Usuarios.menu}" class="btn btn-primary">Acessar</a>
+	</div>
+  </div>
+  #{/if}
+  </div>
 </div>

@@ -43,7 +43,7 @@ public class Usuarios extends Controller {
 		} else {
 			flash.error("Não possível completar este cadastro.");
 		}
-		Logins.login();
+	listar();
 	}
 
 
