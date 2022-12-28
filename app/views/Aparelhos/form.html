@@ -4,7 +4,8 @@
 <div class="col-lg-7">
 	<h3>AR CONDICIONADO</h3><br/>
 	<hr>
-	<p>PREENCHA AS IRFORMAÇÕES COM ATENÇÃO***</p>
+	<span class="text-warning">Preencha as irformações com atenção***</span>
+	<br><br>
 	<form action="@{Aparelhos.salvar}" method="post">
 		<input type="hidden" name="aparelho.id" value="${aparelho?.id}" /> 
 		
@@ -47,6 +48,7 @@
 		<input type="submit" value="Salvar"
 			class="btn btn-primary btn" />
 			<a href="@{Aparelhos.menu}" class="btn btn-primary">Voltar</a>
+			<input type="reset" value="Limpar" class="btn btn-danger" />
 		</div>	
 	</form>
 </div>

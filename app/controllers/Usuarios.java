@@ -41,7 +41,7 @@ public class Usuarios extends Controller {
 			usuario.save();
 			flash.success("Cadastro realizado com sucesso.");
 		} else {
-			flash.error("Não possível completar este cadastro.");
+			flash.error("Não foi possível completar este cadastro.");
 		}
 	listar();
 	}
