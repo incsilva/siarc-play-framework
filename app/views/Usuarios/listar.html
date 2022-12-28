@@ -39,7 +39,7 @@
 					<td>${usuario.funcao}</td>
 					<td><a href="@{Usuarios.detalhar(usuario.id)}"
 						class="btn btn-info"><i class="bi bi-info-circle"></i></a> <a
-						href="#" class="btn btn-primary"><i class="bi bi-person-gear"></i></a> <a
+						href="@{Usuarios.alterarFuncao(usuario.id)}" class="btn btn-primary"><i class="bi bi-person-gear"></i></a> <a
 						href="@{Usuarios.remover(usuario.id)}" class="btn btn-danger"><i
 							class="bi bi-trash"></i></a></td>
 				</tr>

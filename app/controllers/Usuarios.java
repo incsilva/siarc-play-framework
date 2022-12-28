@@ -28,24 +28,23 @@ public class Usuarios extends Controller {
 		render();
 	}
 
-	public static void salvar(@Valid Usuario user, String senha) {
+	public static void salvar(@Valid Usuario usuario, String senha) {
 
-		long quantidade = Usuario.count("matricula = ?1 and id <> ?2", user.matricula, user.id);
+		long quantidade = Usuario.count("matricula = ?1 and id <> ?2", usuario.matricula, usuario.id);
 		if (validation.hasErrors()) {
 			validation.keep();
-			cadastrar(user);
+			cadastrar(usuario);
 		}
 
 		if (quantidade == 0) {
-			user.senha = Crypto.passwordHash(user.senha);
-			user.save();
+			usuario.senha = Crypto.passwordHash(usuario.senha);
+			usuario.save();
 			flash.success("Cadastro realizado com sucesso.");
 		} else {
 			flash.error("Não possível completar este cadastro.");
 		}
 	listar();
 	}
-
 
 	@Adiministrador
 	public static void listar() {
@@ -65,12 +64,6 @@ public class Usuarios extends Controller {
 		render(usuarios, termo);
 	}
 
-	public static void editar(Long id) {
-		Usuario user = Usuario.findById(id);
-		List<Funcao> funcoes = Arrays.asList(Funcao.values());
-		renderTemplate("Usuarios/cadastrar.html", user, funcoes);
-	}
-
 	public static void remover(Long id) {
 		Usuario user = Usuario.findById(id);
 		user.inativar();
@@ -82,4 +75,21 @@ public class Usuarios extends Controller {
 		Usuario user = Usuario.findById(id);
 		render(user);
 	}
+
+	public static void alterarFuncao(Long id) {
+		Usuario user = Usuario.findById(id);
+
+		if (user.funcao == Funcao.admin) {
+			user.funcao = Funcao.usuario;
+			user.save();
+			flash.success("Função alterada com sucesso.");
+		} else {
+			user.funcao = Funcao.admin;
+			user.save();
+			flash.success("Função alterada com sucesso.");
+		}
+
+		listar();
+	}
+
 }

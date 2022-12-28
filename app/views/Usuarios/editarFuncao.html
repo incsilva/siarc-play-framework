@@ -1,0 +1,45 @@
+#{extends 'main.html' /} #{set title:'Cadastro de Usuário' /}
+
+<div class="col-lg-7">
+	<div class="cadastro">
+		<h3>Editar Função</h3>
+		<br>
+		<form action="@{Usuarios.salvar}" method="post">
+			<input type="hidden" name="usuario.id" value="${user.id}" /> 
+			
+			Nome
+			<input type="text" disabled value="${user.nome}" class="form-control" />
+			<br><br>
+			
+			Sobrenome
+			<input type="text" disabled value="${user.sobrenome}" class="form-control" />
+			<br /><br>
+			
+			E-mail
+			<input type="email"
+				value="${user.email}" disabled class="form-control" />
+			<br><br>
+
+			Matrícula
+			<input type="text"
+				class="form-control" disabled value="${user.matricula}" /> 
+			<br><br>
+			
+			Alterar função de usuário
+			<select class="form-select" aria-label="Default select example" name="user.funcao">
+			  <option>-- Escolha uma função --</option>
+			  #{list items:funcoes, as:'f'}
+			  <option #{if user?.funcao == f.toString()} selected #{/if}>${f}</option>
+			  #{/list}
+			</select>
+			
+			<br><br>
+			<div class="d-grid gap-2 d-md-block ">
+				<input type="submit" value="Salvar" class="btn btn-primary" /> 
+				<a href="@{Usuarios.menu}" class="btn btn-primary">Voltar</a> 
+				<input type="reset" value="Limpar" class="btn btn-danger" />
+				<br /> <br />
+			</div>
+		</form>
+	</div>
+</div>
