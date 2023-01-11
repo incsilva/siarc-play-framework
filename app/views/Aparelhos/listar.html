@@ -45,7 +45,11 @@ Sistema de Automação de Ar Condicionados' /}
 							<th>${aparelho.codIrLigar}</th>
 							<th>${aparelho.codIrDesligar}</th>
 							#{if session.get('funcao') == session.get('adm')}
-								<th><a href="@{Aparelhos.editar(aparelho.id)}"
+								<th>
+								<a href="@{Aparelhos.funcionar(aparelho.id)}"
+									class="btn btn-warning btn-sm" style="margin-right: 10px">
+										<i class="bi bi-power"></i></a>
+								<a href="@{Aparelhos.editar(aparelho.id)}"
 									class="btn btn-primary btn-sm" style="margin-right: 10px"><i
 										class="bi bi-pencil-square"></i></a> <a
 									href="@{Aparelhos.remover(aparelho.id)}"

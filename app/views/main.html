@@ -83,11 +83,11 @@
 						#{/if}
 						<!-- Botao sair -->
 
-						<li class="nav dropleft"><a
-							class="nav-link dropleft-toggle" href="#" role="button"
+						<li class="nav dropdown"><a
+							class="nav-link dropdown-toggle" href="#" role="button"
 							data-bs-toggle="dropdown" aria-expanded="false"><i class="gg-profile"></i></a>
 							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="#">Ir para meu perfil: ${session.get('usuario')}</a></li>
+								<li><a class="dropdown-item" href="#">${session.get('usuario')}</a></li>
 								<li><hr class="dropdown-divider"></li>
 								<li><a class="dropdown-item bg-red" href="@{Logins.logout}">Sair</a></li>
 								
