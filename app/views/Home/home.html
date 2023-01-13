@@ -1,0 +1,46 @@
+#{extends 'main.html' /} #{set title:'Início - SIARC: Sistema de
+Automação de Ar Condiciondos' /}
+<div class="container text-center">
+	<img class="capa" src="@{'/public/images/capa.svg'}">
+</div>
+<h3>Seja bem vind@!</h3>
+<br />
+<div class="corpo-home">
+	<div class="container text-center row">
+		#{if session.get('funcao') == session.get('adm')}
+		<div class="col-sm-6" id="cards">
+			<div class="card mb-4 shadow-sm">
+				<div class="card-header" id="background-card">
+					<img id="img-card-pessoa" src="@{'/public/images/usuarios-card.svg'}"
+						alt="Aparelhos"> <br>
+				</div>
+				<div class="card-body">
+					<h5 class="card-title">Terminal de Usuários</h5>
+					<ul class="list-unstyled mt-3 mb-4">
+						<li>Gerenciar Usuários</li>
+						<li>Modificar Permissões de Usuários</li>
+					</ul>
+					<a href="@{Usuarios.menu}" class="btn btn-primary">Acessar</a>
+				</div>
+			</div>
+		</div>
+		#{/if}
+
+		<div class="col-sm-6" id="cards">
+			<div class="card mb-4 shadow-sm">
+				<div class="card-header" id="background-card">
+					<img src="@{'/public/images/aparelhos-card.svg'}"
+						class="img-aparelhos" alt="...">
+				</div>
+				<div class="card-body">
+					<h5 class="card-title">Terminal de Aparelhos</h5>
+					<ul class="list-unstyled mt-3 mb-4">
+						<li>Gerenciar Aparelhos</li>
+						<li>Realizar Agendamentos</li>
+					</ul>
+					<a href="@{Aparelhos.menu}" class="btn btn-primary">Acessar</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

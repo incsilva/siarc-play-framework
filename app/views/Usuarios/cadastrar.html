@@ -1,0 +1,65 @@
+#{extends 'main.html' /} #{set title:'Cadastro de Usuário' /}
+
+<div class="col-lg-7">
+	<div class="cadastro">
+		<h3>Cadastro</h3>
+		<br>
+		<hr>
+		<span class="text-warning">Preencha as irformações com atenção***</span>
+		
+		<br><br>
+		<form action="@{Usuarios.salvar}" method="post">
+			<input type="hidden" name="usuario.id" value="${usuario.id}" /> 
+			
+			Nome
+			<input type="text" name="usuario.nome" placeholder="Nome" value="${usuario.nome}" class="form-control" />
+			<span class="text-danger">#{error 'usuario.nome' /}</span>
+			<br><br>
+			
+			Sobrenome
+			<input type="text" name="usuario.sobrenome" placeholder="Sobrenome" value="${usuario.sobrenome}" class="form-control" />
+			<span class="text-danger">#{error 'usuario.sobrenome' /}</span>
+			<br /><br>
+			
+			E-mail
+			<input type="email" name="usuario.email" placeholder="E-mail"
+				value="${usuario.email}" class="form-control" />
+			<span class="text-danger">#{error 'usuario.email' /}</span>
+			<br><br>
+
+			Matrícula
+			<input type="text" name="usuario.matricula" placeholder="Matrícula"
+				class="form-control" value="${usuario.matricula}" /> 
+			<span class="text-danger">#{error 'usuario.matricula' /}</span>
+			<br><br>
+
+			Senha
+			<input type="password" name="usuario.senha" placeholder="Senha"
+				class="form-control" />
+			<span class="text-danger">#{error 'usuario.senha' /}</span>
+			<br><br>
+
+			Confirme a senha
+			<input type="password" name="usuario.confirmaSenha" placeholder="Confirmar Senha"
+				class="form-control" /> 
+			<span class="text-danger">#{error 'usuario.confirmaSenha' /}</span>
+			<br /> <br>
+			
+			Função de usuário
+			<select class="form-select" aria-label="Default select example" name="usuario.funcao">
+			  <option>-- Escolha uma função --</option>
+			  #{list items:funcoes, as:'f'}
+			  <option #{if usuario?.funcao == f.toString()} selected #{/if}>${f}</option>
+			  #{/list}
+			</select>
+			
+			<br><br>
+			<div class="d-grid gap-2 d-md-block ">
+				<input type="submit" value="Salvar" class="btn btn-primary" /> 
+				<a href="@{Usuarios.listar}" class="btn btn-primary">Lista</a> 
+				<input type="reset" value="Limpar" class="btn btn-danger" />
+				<br /> <br />
+			</div>
+		</form>
+	</div>
+</div>

@@ -1,0 +1,67 @@
+#{extends 'main.html' /} #{set title:'Aparelhos: Gerenciamento - SIARC:
+Sistema de Automação de Ar Condicionados' /}
+<h3>Terminal de Aparelhos</h3>
+<br />
+<br>
+<div class="row">
+	<div class="col-sm-6 mb-3 mb-sm-3">
+		<div class="card border-primary">
+			<div class="card-body">
+				<h5 class="card-title text-center">Aparelhos</h5>
+				<hr>
+				<p class="card-text">Aqui você pode verificar todos os aparelhos
+					cadastrados.</p>
+				<div class="text-center">
+					<a href="@{Aparelhos.listar}" class="btn btn-primary">Acessar</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-6 mb-3 mb-sm-3">
+		<div class="card border-primary">
+			<div class="card-body">
+				<h5 class="card-title text-center">Aparelhos Ativos</h5>
+				<hr>
+				<p class="card-text">Aqui você pode verificar todos os aparelhos
+					que estão ativos no momento.</p>
+				<div class="text-center">
+					<a href="@{Aparelhos.ligados}" class="btn btn-primary">Acessar</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-6 mb-3 mb-sm-3">
+		<div class="card border-primary">
+			<div class="card-body">
+				<h5 class="card-title text-center">Aparelhos Inativos</h5>
+				<hr>
+				<p class="card-text">Aqui você pode verificar todos os aparelhos
+					que estão inativos no momento.</p>
+				<div class="text-center">
+					<a href="@{Aparelhos.desligados}" class="btn btn-primary">Acessar</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-6 mb-3 mb-sm-3">
+		<div class="card border-primary">
+			<div class="card-body">
+				<h5 class="card-title text-center">Adicionar Novo</h5>
+				<hr>
+				<p class="card-text">Aqui você pode adicionar um novo aparelho
+					condicionador de ar.</p>
+				<div class="text-center">
+					<a href="@{Aparelhos.form}" class="btn btn-primary">Acessar</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+

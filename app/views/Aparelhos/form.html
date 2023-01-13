@@ -1,0 +1,55 @@
+#{extends 'main.html' /} #{set title:'Ar Condicionado: Cadastrar - SIARC: Sistema de Automação de Ar Condicionados' /}
+<div class="cadastro">
+<br>
+<div class="col-lg-7">
+	<h3>AR CONDICIONADO</h3><br/>
+	<hr>
+	<span class="text-warning">Preencha as irformações com atenção***</span>
+	<br><br>
+	<form action="@{Aparelhos.salvar}" method="post">
+		<input type="hidden" name="aparelho.id" value="${aparelho?.id}" /> 
+		
+		Nome
+		<input autofocus="autofocus" type="text" name="aparelho.nome" placeholder="Nome"
+			value="${aparelho?.nome}" class="form-control" /> 
+		<span class="text-danger">#{error 'aparelho.nome' /}</span>
+		<br /> <br>
+		
+		Endereço IP
+		<input type="text" name="aparelho.enderecoIp" placeholder="Endereço IP"
+			value="${aparelho?.enderecoIp}" class="form-control" /> 
+		<span class="text-danger">#{error 'aparelho.enderecoIp' /}</span>
+		<br><br> 
+		
+		Endereço MAC
+		<input type="text" name="aparelho.enderecoMac" placeholder="Endereço MAC"
+			value="${aparelho?.enderecoMac}" class="form-control" /> 
+		<span class="text-danger">#{error 'aparelho.enderecoMac' /}</span>
+		<br><br>
+			
+		Local
+		<input type="text" name="aparelho.local" placeholder="Local"
+			value="${aparelho?.local}" class="form-control">
+		<span class="text-danger">#{error 'aparelho.local' /}</span>
+		<br><br>
+			
+		Código IR Ligar
+		<input type="text" name="aparelho.codIrLigar" placeholder="Código Infravermelho: LIGAR"
+			value="${aparelho?.codIrLigar}" class="form-control" />
+		<span class="text-danger">#{error 'aparelho.codIrLigar' /}</span>
+		<br><br>
+			
+		Código IR Desligar
+		<input type="text" name="aparelho.codIrDesligar" placeholder="Código Infravermelho: DESLIGAR"
+			value="${aparelho?.codIrDesligar}" class="form-control" /> 
+		<span class="text-danger">#{error 'aparelho.codIrDesligar' /}</span>
+		<br><br> 
+			<div class="d-grid gap-2 d-md-block ">
+		<input type="submit" value="Salvar"
+			class="btn btn-primary btn" />
+			<a href="@{Aparelhos.menu}" class="btn btn-primary">Voltar</a>
+			<input type="reset" value="Limpar" class="btn btn-danger" />
+		</div>	
+	</form>
+</div>
+</div>

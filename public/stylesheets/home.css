@@ -1,0 +1,44 @@
+.corpo-home {
+	padding-left: 20%;
+	padding-right: 20%;
+}
+
+.capa {
+	width: 590px;
+}
+
+#img-card-pessoa {
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+@media ( max-width : 1360px) {
+	.capa {
+		width: 680px;
+	}
+	#img-card-pessoa {
+		width: 190px;
+	}
+}
+
+@media ( max-width : 956px) {
+	.capa {
+		width: 540px;
+	}
+	#img-card-pessoa {
+		width: 120px;
+	}
+}
+
+@media ( max-width : 775px) {
+	.corpo-home {
+		padding-left: 0%;
+		padding-right: 0%;
+	}
+}
+
+@media ( max-width : 606px) {
+	.capa {
+		width: 340px;
+	}
+}

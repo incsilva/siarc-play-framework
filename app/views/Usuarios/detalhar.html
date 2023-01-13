@@ -1,0 +1,43 @@
+#{extends 'main.html' /} #{set title: 'Detalhamento de usuário' /}
+
+
+	<h3>${user.nome}</h3>
+
+	<div class="table-responsive">
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<td></td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th scope="row">Nome</th>
+					<td>${user.nome} ${user.sobrenome}</td>
+				</tr>
+				<tr>
+					<th scope="row">E-mail</th>
+					<td>${user.email}</td>
+				</tr>
+				<tr>
+					<th scope="row">Matrícula</th>
+					<td>${user.matricula}</td>
+				</tr>
+				<tr>
+					<th scope="row">Função</th>
+					<td>${user.funcao}</td>
+				</tr>
+				<tr>
+					<th scope="row">Status</th>
+					<td>${user.status}</td>
+				</tr>
+				<tr>
+					<th scope="row">Registrado em:</th>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<a href="@{Usuarios.listar}" class="btn btn-primary">Voltar</a>
