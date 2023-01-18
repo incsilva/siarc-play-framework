@@ -1,0 +1,52 @@
+#{extends 'main.html' /} #{set title:'Aparelhos: Configurar Aparelhos- SIARC:
+Sistema de Automação de Ar Condicionados' /}
+
+<div>
+	<div>
+		<h3>Configurar Aparelhos</h3>
+		<br>
+		<form action="@{Aparelhos.listar}" method="get">
+			<div class="input-group mb-3">
+				<input type="text" name="termo" class="form-control"
+					placeholder="Pesquisar" aria-label="Pesquisar"
+					aria-describedby="button-addon2"> <input
+					class="btn btn-primary" value="Pesquisar" type="submit"
+					id="button-addon2">
+				<!--  <a href="@{Aparelhos.menu}" class="btn btn-outline-primary btn-sm col-1">Voltar</a> -->
+			</div>
+			#{if termo} <small>Pesquisando por: ${termo}</small> #{/if} #{else} <small>Pesquisar
+				por todos os aparelhos</small> #{/else}
+		</form>
+		<div class="table-responsive">
+			<table class="table table-striped table-hover">
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>Endereço IP</th>
+						<th>Endereço MAC</th>
+						<th>Local</th>
+						<th>Ações</th>
+					</tr>
+				</thead>
+				<tbody>
+					#{list items: ap, as:'ap'}
+					<tr>
+						<th>${ap.nome}</th>
+						<th>${ap.enderecoIp}</th>
+						<th>${ap.enderecoMac}</th>
+						<th>${ap.local}</th>
+						<th><a
+								href="@{Aparelhos.editar(ap.id)}"
+								class="btn btn-primary btn-sm" style="margin-right: 10px"><i
+									class="bi bi-pencil-square"></i></a> <a
+								href="@{Aparelhos.remover(ap.id)}"
+								class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></a>
+					</tr>
+					#{/list}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<br>
+<br>
