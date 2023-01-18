@@ -1,7 +1,7 @@
-#{extends 'main.html' /} #{set title:'Lista de Usuários' /}
+#{extends 'main.html' /} #{set title:'Lista de UsuÃ¡rios' /}
 
 <div class="container">
-	<h3 style="text-align: center">Usuários</h3>
+	<h3 style="text-align: center">UsuÃ¡rios</h3>
 	<br>
 
 	<form action="@{Usuarios.listar}">
@@ -25,9 +25,10 @@
 				<tr>
 					<th>Nome</th>
 					<th>Email</th>
-					<th>Matrícula</th>
-					<th>Função</th>
-					<th>Ações</th>
+					<th>Descrição</th>
+					<th>MatrÃ­cula</th>
+					<th>FunÃ§Ã£o</th>
+					<th>AÃ§Ãµes</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -35,6 +36,7 @@
 				<tr>
 					<td>${usuario.nome} ${usuario.sobrenome}</td>
 					<td>${usuario.email}</td>
+					<td>${usuario.descricao}</td>
 					<td>${usuario.matricula}</td>
 					<td>${usuario.funcao}</td>
 					<td><a href="@{Usuarios.detalhar(usuario.id)}"

@@ -3,6 +3,7 @@ package models;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 
 import models.statusUsuario;
@@ -48,6 +49,9 @@ public class Usuario extends Model {
 	@Enumerated(EnumType.STRING)
 	public statusUsuario status;
 
+	@ManyToOne
+	public DescricaoUsuario descricao;
+	
 	public Usuario() {
 		funcao = funcao.usuario;
 		status = statusUsuario.ativo;

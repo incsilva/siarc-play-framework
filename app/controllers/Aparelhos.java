@@ -1,6 +1,5 @@
 package controllers;
 
-
 import java.util.Collections;
 import java.util.List;
 
@@ -29,7 +28,7 @@ public class Aparelhos extends Controller {
 		}
 
 		if (qtd == 0) {
-			aparelho.status = Status.desligado;
+			aparelho.status = Status.INATIVO;
 			aparelho.save();
 			flash.success("Cadastro realizado com sucesso.");
 		} else {
@@ -66,43 +65,53 @@ public class Aparelhos extends Controller {
 		render(aparelhos, termo);
 	}
 
+	public static void configurar() {
+		List<Aparelho> ap = Collections.EMPTY_LIST;
+		ap = Aparelho.findAll();
+		render(ap);
+	}
+
 	public static void ligados() {
 		List<Aparelho> ligados = Collections.EMPTY_LIST;
-		ligados = Aparelho.find("status = ?1", Status.ligado).fetch();
+		ligados = Aparelho.find("status = ?1", Status.ATIVO).fetch();
 		render(ligados);
 	}
 
 	public static void desligados() {
 		List<Aparelho> desligados = Collections.EMPTY_LIST;
-		desligados = Aparelho.find("status = ?1", Status.desligado).fetch();
+		desligados = Aparelho.find("status = ?1", Status.INATIVO).fetch();
 		render(desligados);
 	}
 
 	public static void funcionar(Long id) {
 		Aparelho ap = Aparelho.findById(id);
-		
-		if (ap.status == Status.ligado) {
-			ap.status = Status.desligado;
+
+		if (ap.status == Status.ATIVO) {
+			ap.status = Status.INATIVO;
 			ap.save();
 		} else {
-			ap.status = Status.ligado;
+			ap.status = Status.ATIVO;
 			ap.save();
 		}
-
-		ligados();
+		listar();
 	}
 
-	/*public static void conexaoHttp(String ip, String cod) throws IOException, InterruptedException {
-
-		HttpRequest request = HttpRequest.newBuilder()
-				.POST(BodyPublishers.ofString("{\"ip address\": \"" + ip + "\", \"codigo\": \" " + cod + "\"}"))
-				.uri(URI.create("")).headers("Accept", "application/json")
-
-				.timeout(Duration.ofSeconds(5)).build();
-
-		HttpClient httpClient = HttpClient.newBuilder().connectTimeout(Duration.ofSeconds(3))
-				.followRedirects(Redirect.NORMAL).build();
-
-		httpClient.sendAsync(request, BodyHandlers.ofString()).thenApply(HttpResponse::body);
-	}*/
+	/*
+	 * public static void conexaoHttp(String ip, String cod) throws IOException,
+	 * InterruptedException {
+	 * 
+	 * HttpRequest request = HttpRequest.newBuilder()
+	 * .POST(BodyPublishers.ofString("{\"ip address\": \"" + ip +
+	 * "\", \"codigo\": \" " + cod + "\"}")) .uri(URI.create("")).headers("Accept",
+	 * "application/json")
+	 * 
+	 * .timeout(Duration.ofSeconds(5)).build();
+	 * 
+	 * HttpClient httpClient =
+	 * HttpClient.newBuilder().connectTimeout(Duration.ofSeconds(3))
+	 * .followRedirects(Redirect.NORMAL).build();
+	 * 
+	 * httpClient.sendAsync(request,
+	 * BodyHandlers.ofString()).thenApply(HttpResponse::body); }
+	 */
 }

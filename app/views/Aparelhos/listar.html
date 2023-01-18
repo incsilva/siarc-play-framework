@@ -1,8 +1,8 @@
 #{extends 'main.html' /} #{set title:'Aparelhos: Listagem - SIARC:
-Sistema de Automação de Ar Condicionados' /}
+Sistema de AutomaÃ§Ã£o de Ar Condicionados' /}
 <div>
 	<div>
-		<h3>Aparelhos Cadastrados</h3>
+		<h3>Aparelhos</h3>
 		<br>
 		<form action="@{Aparelhos.listar}" method="get">
 			<div class="input-group mb-3">
@@ -23,13 +23,10 @@ Sistema de Automação de Ar Condicionados' /}
 					<thead>
 						<tr>
 							<th>Nome</th>
-							<th>Endereço IP</th>
-							<th>Endereço MAC</th>
+							<th>EndereÃ§o IP</th>
 							<th>Local</th>
-							<th>Código IR Ligar</th>
-							<th>Código IR Desligar</th> #{if session.get('funcao') ==
-							session.get('adm')}
-							<th>Ações</th> #{/if}
+							<th>Status</th>
+							<th>AÃ§Ãµes</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -37,20 +34,11 @@ Sistema de Automação de Ar Condicionados' /}
 						<tr>
 							<th>${aparelho.nome}</th>
 							<th>${aparelho.enderecoIp}</th>
-							<th>${aparelho.enderecoMac}</th>
 							<th>${aparelho.local}</th>
-							<th>${aparelho.codIrLigar}</th>
-							<th>${aparelho.codIrDesligar}</th> #{if session.get('funcao') ==
-							session.get('adm')}
+							<th>${aparelho.status}</th>
 							<th><a href="@{Aparelhos.funcionar(aparelho.id)}"
 								class="btn btn-warning btn-sm" style="margin-right: 10px"> <i
-									class="bi bi-power"></i></a> <a
-								href="@{Aparelhos.editar(aparelho.id)}"
-								class="btn btn-primary btn-sm" style="margin-right: 10px"><i
-									class="bi bi-pencil-square"></i></a> <a
-								href="@{Aparelhos.remover(aparelho.id)}"
-								class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></a></th>
-							#{/if}
+									class="bi bi-power"></i></a></th>
 						</tr>
 						#{/list}
 					</tbody>

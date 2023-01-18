@@ -32,7 +32,7 @@ public class Aparelho extends Model {
 	public String codIrDesligar;
 
 	public Aparelho() {
-		status = status.ligado;
+		status = status.ATIVO;
 	}
 
 	@Enumerated(EnumType.STRING)

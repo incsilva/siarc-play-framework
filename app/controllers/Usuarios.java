@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
+import models.DescricaoUsuario;
 import models.Funcao;
 import models.Status;
 import models.Usuario;
@@ -21,7 +22,8 @@ public class Usuarios extends Controller {
 
 	public static void cadastrar(Usuario usuario) {
 		List<Funcao> funcoes = Arrays.asList(Funcao.values());
-		render(funcoes, usuario);
+		List<DescricaoUsuario> descricoes = DescricaoUsuario.findAll();
+		render(funcoes, descricoes, usuario);
 	}
 
 	public static void menu() {
@@ -43,7 +45,7 @@ public class Usuarios extends Controller {
 		} else {
 			flash.error("Não foi possível completar este cadastro.");
 		}
-	listar();
+		listar();
 	}
 
 	@Adiministrador
@@ -54,12 +56,10 @@ public class Usuarios extends Controller {
 		if (termo == null || termo.isEmpty()) {
 			usuarios = Usuario.find("status = ?1", statusUsuario.ativo).fetch();
 		} else {
-			usuarios = Usuario.find("(lower(nome) like ?1 OR lower(sobrenome) like ?2 OR lower(email) like ?3 OR matricula = ?4) AND status = ?5",
-					"%" + termo.toLowerCase() + "%",
-					"%" + termo.toLowerCase() + "%",
-					"%" + termo.toLowerCase() + "%",
-					"%" + termo.toLowerCase() + "%",
-					statusUsuario.ativo).fetch();
+			usuarios = Usuario.find(
+					"(lower(nome) like ?1 OR lower(sobrenome) like ?2 OR lower(email) like ?3 OR matricula = ?4) AND status = ?5",
+					"%" + termo.toLowerCase() + "%", "%" + termo.toLowerCase() + "%", "%" + termo.toLowerCase() + "%",
+					"%" + termo.toLowerCase() + "%", statusUsuario.ativo).fetch();
 		}
 		render(usuarios, termo);
 	}

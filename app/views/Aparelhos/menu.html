@@ -9,7 +9,7 @@ Sistema de Automação de Ar Condicionados' /}
 			<div class="card-body">
 				<h5 class="card-title text-center">Aparelhos</h5>
 				<hr>
-				<p class="card-text">Aqui você pode verificar todos os aparelhos
+				<p class="card-text">Aqui você pode ligar ou desligar os aparelhos
 					cadastrados.</p>
 				<div class="text-center">
 					<a href="@{Aparelhos.listar}" class="btn btn-primary">Acessar</a>
@@ -17,6 +17,22 @@ Sistema de Automação de Ar Condicionados' /}
 			</div>
 		</div>
 	</div>
+		 #{if session.get('funcao') ==
+							session.get('adm')}
+	<div class="col-sm-6 mb-3 mb-sm-3">
+		<div class="card border-primary">
+			<div class="card-body">
+				<h5 class="card-title text-center">Configurar Aparelhos</h5>
+				<hr>
+				<p class="card-text">Aqui você pode remover ou editar um
+					aparelho.</p>
+				<div class="text-center">
+					<a href="@{Aparelhos.configurar}" class="btn btn-primary">Acessar</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	#{/if}
 	<div class="col-sm-6 mb-3 mb-sm-3">
 		<div class="card border-primary">
 			<div class="card-body">
@@ -43,6 +59,8 @@ Sistema de Automação de Ar Condicionados' /}
 			</div>
 		</div>
 	</div>
+		 #{if session.get('funcao') ==
+							session.get('adm')}
 	<div class="col-sm-6 mb-3 mb-sm-3">
 		<div class="card border-primary">
 			<div class="card-body">
@@ -56,6 +74,7 @@ Sistema de Automação de Ar Condicionados' /}
 			</div>
 		</div>
 	</div>
+	#{/if}
 </div>
 
 

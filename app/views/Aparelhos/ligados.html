@@ -21,10 +21,9 @@ Sistema de Automação de Ar Condicionados' /}
 				<thead>
 					<tr>
 						<th>Nome</th>
-						<th>Endereço IP</th>
+						<th>Endere�o IP</th>
 						<th>Local</th>
 						<th>Status</th>
-						<th>Ações</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -34,9 +33,6 @@ Sistema de Automação de Ar Condicionados' /}
 						<th>${ap.enderecoIp}</th>
 						<th>${ap.local}</th>
 						<th>${ap.status}</th>
-						<th><a href="@{Aparelhos.funcionar(ap.id)}"
-							class="btn btn-warning btn-sm" style="margin-right: 10px"><i
-								class="bi bi-power"></i></a>
 					</tr>
 					#{/list}
 				</tbody>

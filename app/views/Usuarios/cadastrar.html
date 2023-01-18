@@ -5,7 +5,7 @@
 		<h3>Cadastro</h3>
 		<br>
 		<hr>
-		<span class="text-warning">Preencha as irformações com atenção***</span>
+		<span class="text-warning">Preencha as informações com atenção***</span>
 		
 		<br><br>
 		<form action="@{Usuarios.salvar}" method="post">
@@ -25,6 +25,15 @@
 			<input type="email" name="usuario.email" placeholder="E-mail"
 				value="${usuario.email}" class="form-control" />
 			<span class="text-danger">#{error 'usuario.email' /}</span>
+			<br><br>
+			
+			Descrição do usuário
+			<select name="usuario.descricao.id" class="form-select">
+			<option>-- Escolha a descrição --</option>
+			#{list items:descricoes, as:'d'}
+				<option value="${d.id}" ${d.id == usuario?.descricao?.id? 'selected' : ''}>${d}</option>
+			#{/list}
+			</select>
 			<br><br>
 
 			Matrícula
@@ -46,7 +55,7 @@
 			<br /> <br>
 			
 			Função de usuário
-			<select class="form-select" aria-label="Default select example" name="usuario.funcao">
+			<select class="form-select" name="usuario.funcao">
 			  <option>-- Escolha uma função --</option>
 			  #{list items:funcoes, as:'f'}
 			  <option #{if usuario?.funcao == f.toString()} selected #{/if}>${f}</option>
